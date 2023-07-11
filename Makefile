@@ -6,7 +6,7 @@
 #    By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 10:35:35 by ratavare          #+#    #+#              #
-#    Updated: 2023/07/11 16:16:50 by ratavare         ###   ########.fr        #
+#    Updated: 2023/07/11 17:37:52 by ratavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,8 @@ $(NAME):	$(SRC)
 			$(CC) $(CFLAGS) $(SRC) $(INCLUDES) -o $(NAME)
 
 clean:		
-			make clean -C ./libft
 			$(RM) $(NAME)
 fclean:
-			make fclean -C ./libft
 			$(RM) $(NAME)
 
 re:		fclean	$(NAME)

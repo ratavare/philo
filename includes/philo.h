@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/11 16:54:44 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/07/11 17:25:14 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <pthread.h>
+# include <stdbool.h>
 
 # define DEAD	1
 # define EAT	2
@@ -49,5 +50,11 @@ struct s_philo
 	pthread_t		thread;
 	t_philo			*next;
 };
+
+// check.c
+int	check_args(int ac, char **av, t_data *data);
+
+//utils.c
+int	ft_atoi(const char *nptr);
 
 #endif
