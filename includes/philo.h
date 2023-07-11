@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/11 16:50:07 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/07/11 16:54:44 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ struct s_philo
 	int				eat_count;
 	pthread_mutex_t	mutex_status;
 	pthread_mutex_t	mutex_fork;
-	pthread			thread;
+	pthread_t		thread;
 	t_philo			*next;
 };
 
