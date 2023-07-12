@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:22:00 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/11 17:22:57 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:43:02 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int	ft_atoi(const char *nptr)
 			sinal *= -1;
 		i++;
 	}
-	while ((nptr[i] && nptr[i] >= '0' && nptr[i] <= '9'))
+	while ((nptr[i]))
 	{
+		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
+			return (0);
 		res = 10 * res + nptr[i] - '0';
 		i++;
 	}

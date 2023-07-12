@@ -6,7 +6,7 @@
 #    By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 10:35:35 by ratavare          #+#    #+#              #
-#    Updated: 2023/07/11 17:37:52 by ratavare         ###   ########.fr        #
+#    Updated: 2023/07/12 14:40:30 by ratavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=		philo
 
 CC			=		cc
 
-CFLAGS		=		-Wall -Wextra -Werror -g
+CFLAGS		=		-Wall -Wextra -Werror -pthread -g
 
 INCLUDES	=		-I$(HEADERS_DIRECTORY)
 

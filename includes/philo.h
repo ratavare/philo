@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/11 17:25:14 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:24:48 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ struct s_philo
 };
 
 // check.c
-int	check_args(int ac, char **av, t_data *data);
+int	get_values(int ac, char **av, t_data *data);
+int	check_args(int ac, char **av);
 
 //utils.c
 int	ft_atoi(const char *nptr);
