@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/12 16:24:48 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:19:32 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				total_meals;
+	t_philo			*first_seat;
 };
 
 struct s_philo
@@ -52,8 +53,10 @@ struct s_philo
 };
 
 // check.c
-int	get_values(int ac, char **av, t_data *data);
 int	check_args(int ac, char **av);
+
+// init.c
+int	get_values(int ac, char **av, t_data *data);
 
 //utils.c
 int	ft_atoi(const char *nptr);
