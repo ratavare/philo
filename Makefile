@@ -6,7 +6,7 @@
 #    By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 10:35:35 by ratavare          #+#    #+#              #
-#    Updated: 2023/11/21 16:11:28 by ratavare         ###   ########.fr        #
+#    Updated: 2023/11/21 23:37:01 by ratavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ clean:
 fclean:
 			$(RM) $(NAME)
 
-re:		
-			fclean	$(NAME)
+re:			fclean $(NAME)
+
 v:
 			make && valgrind ./philo
