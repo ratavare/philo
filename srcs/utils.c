@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:22:00 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/12 16:43:02 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:17:13 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,11 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return ((int)(res * sinal));
+}
+
+int	ft_error(const char *msg, int exit_code)
+{
+	while (*msg)
+		write(2, msg++, 1);
+	return (exit_code);
 }

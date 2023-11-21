@@ -6,7 +6,7 @@
 #    By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 10:35:35 by ratavare          #+#    #+#              #
-#    Updated: 2023/07/12 14:40:30 by ratavare         ###   ########.fr        #
+#    Updated: 2023/11/21 16:11:28 by ratavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,7 @@ clean:
 fclean:
 			$(RM) $(NAME)
 
-re:		fclean	$(NAME)
-
-bonus:		$(BONUS)
-
-$(BONUS):	$(LIBFT) $(FT_PRINTF) $(SRCB)
-			$(CC) $(CFLAGS) $(SRCB) $(FT_PRINTF) $(LIBFT) $(INCLUDES) -I /checker/checker.h -o $(BONUS)
-			
+re:		
+			fclean	$(NAME)
+v:
+			make && valgrind ./philo
