@@ -6,8 +6,13 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/07/12 17:21:29 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:18:08 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	philosophers(t_data *data)
+{
+	data->first_time = get_time();
+}

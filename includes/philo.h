@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/21 18:32:32 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/22 14:22:16 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				total_meals;
+	long long		first_time;
 	int				dead_flag;
 	pthread_mutex_t	meal_check;
 	pthread_mutex_t	forks[200];
@@ -72,8 +73,12 @@ int	init_mutex(t_data *data);
 int	init_philos(t_data *data);
 int	init(t_data *data);
 
-//utils.c
+// utils.c
 int	ft_atoi(const char *nptr);
 int	ft_error(const char *msg, int exit_code);
+
+// time.c
+void				ft_mssleep(int ms);
+unsigned long long	get_time(void);
 
 #endif
