@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:22:00 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/21 16:17:13 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:04:39 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,25 @@ int	ft_error(const char *msg, int exit_code)
 	while (*msg)
 		write(2, msg++, 1);
 	return (exit_code);
+}
+
+void	print_action(int id, t_data *data, char *msg)
+{
+	pthread_mutex_lock(&data->writing);
+	if (!data->dead_flag)
+	{
+		printf("%lli ", get_time() - data->first_time);
+		printf("%d %s\n", id, msg);
+	}
+	pthread_mutex_unlock(&data->writing);
+}
+
+int	check_dead_flag(t_data *data)
+{
+	int val;
+
+	pthread_mutex_lock(&data->death_check);
+	val = data->dead_flag;
+	pthread_mutex_unlock(&data->death_check);
+	return (val);
 }

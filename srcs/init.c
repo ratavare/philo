@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:02:51 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/21 18:02:37 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/23 18:09:58 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	get_values(int ac, char **av, t_data *data)
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		data->total_meals = ft_atoi(av[5]);
+		data->max_meals = ft_atoi(av[5]);
+	else
+		data->max_meals = INT_MAX;
 	data->dead_flag = 0;
-	if (data->philo_num > 200)
+	if (data->philo_num > 250)
 		return (1);
 	return (0);
 }
@@ -40,7 +42,7 @@ int	init_mutex(t_data *data)
 	}
 	if (pthread_mutex_init(&(data->writing), NULL))
 		return (1);
-	if (pthread_mutex_init(&(data->meal_check), NULL))
+	if (pthread_mutex_init(&(data->death_check), NULL))
 		return (1);
 	return (0);
 }
