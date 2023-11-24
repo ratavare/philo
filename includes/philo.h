@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/23 20:05:11 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:42:56 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,7 @@
 
 To do:
 
-- Create threads and routines for the philosophers, keep in mind:
-	. Saving the fisrt timestamp in order to compare times.
-	. Creating accurate time comparison functions.
-	. Preventing DeadLocks
-	. Have them eat and print the right info inside their routine.
-
-- Checker function to see if they have died.
-- Destroying all Mutexes and Threads and exiting the program.
+- Fix problem for 1 philo where he waits indefinetly for a mutex that is doubled.
 
 */
 
@@ -67,25 +60,26 @@ struct s_data
 };
 
 // check.c
-int	check_args(int ac, char **av);
+int					check_args(int ac, char **av);
 
 // init.c
-int	get_values(int ac, char **av, t_data *data);
-int	init_mutex(t_data *data);
-int	init_philos(t_data *data);
-int	init(t_data *data);
+int					get_values(int ac, char **av, t_data *data);
+int					init_mutex(t_data *data);
+int					init_philos(t_data *data);
+int					init(t_data *data);
 
 // utils.c
-int	ft_atoi(const char *nptr);
-int	ft_error(const char *msg, int exit_code);
-void	print_action(int id, t_data *data, char *msg);
-int	check_dead_flag(t_data *data);
+int					ft_atoi(const char *nptr);
+int					ft_error(const char *msg, int exit_code);
+void				print_action(int id, t_data *data, char *msg);
+int					check_dead_flag(t_data *data);
+int					check_if_all_ate(t_data *data, t_philo *philo);
 
 // time.c
 void				ft_mssleep(int ms);
 unsigned long long	get_time(void);
 
 // philo.c
-int	philosophers(t_data *data);
+int					philosophers(t_data *data);
 
 #endif

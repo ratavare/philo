@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/23 20:07:38 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:46:02 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	eating(t_philo *philo, t_data *data)
 	pthread_mutex_lock(&data->death_check);
 	print_action(philo->id, data, "is eating");
 	philo->last_meal = get_time();
+	philo->eat_count++;
 	pthread_mutex_unlock(&data->death_check);
 	ft_mssleep(data->time_to_eat);
-	philo->eat_count++;
 	pthread_mutex_unlock(&data->forks[philo->right_fork_id]);
 	pthread_mutex_unlock(&data->forks[philo->left_fork_id]);
 }
@@ -47,6 +47,8 @@ void	*routine(void *v_philo)
 	data = philo->data;
 	if (philo->id % 2)
 		ft_mssleep(10);
+	if (data->philo_num == 1)
+		return (print_action(philo->id, data, "has taken a fork (his)"), NULL);
 	while (!check_dead_flag(data))
 	{
 		// pthread_mutex_lock(&data->death_check);
@@ -75,6 +77,8 @@ void	supervisor(t_philo *philo, t_data *data)
 		i = -1;
 		while (++i < data->philo_num && !check_dead_flag(data))
 		{
+			if (check_if_all_ate(data, philo))
+				return ;
 			pthread_mutex_lock(&data->death_check);
 			if (get_time() - philo[i].last_meal >= \
 			(long long unsigned int)data->time_to_die)
@@ -99,11 +103,11 @@ void	destroy(t_philo *philo, t_data *data)
 {
 	int	i;
 
-	i = data->philo_num;
-	while (i > 0)
+	i = 0;
+	while (i < data->philo_num)
 	{
-		i--;
 		pthread_join(philo[i].thread, NULL);
+		i++;
 	}
 	i = data->philo_num;
 	while (i > 0)

@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 17:22:00 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/23 20:04:39 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:46:26 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,29 @@ void	print_action(int id, t_data *data, char *msg)
 
 int	check_dead_flag(t_data *data)
 {
-	int val;
+	int	val;
 
 	pthread_mutex_lock(&data->death_check);
 	val = data->dead_flag;
 	pthread_mutex_unlock(&data->death_check);
 	return (val);
+}
+
+int	check_if_all_ate(t_data *data, t_philo *philo)
+{
+	int	i;
+	int	meal_check;
+
+	i = data->philo_num;
+	meal_check = 0;
+	while (--i >= 0)
+	{
+		pthread_mutex_lock(&data->death_check);
+		if (philo[i].eat_count == data->max_meals)
+			meal_check++;
+		pthread_mutex_unlock(&data->death_check);
+		if (meal_check == data->philo_num)
+			return (1);
+	}
+	return (0);
 }

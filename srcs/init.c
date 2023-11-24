@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:02:51 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/23 18:09:58 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/24 16:23:20 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ int	init_philos(t_data *data)
 		data->philosophers[i].id = i;
 		data->philosophers[i].eat_count = 0;
 		data->philosophers[i].left_fork_id = i;
-		if (i == data->philo_num - 1)
-			data->philosophers[i].right_fork_id = 0;
-		else
-			data->philosophers[i].right_fork_id = i + 1;
+		if (data->philo_num != 1)
+		{
+			if (i == data->philo_num - 1)
+				data->philosophers[i].right_fork_id = 0;
+			else
+				data->philosophers[i].right_fork_id = i + 1;
+		}
 		data->philosophers[i].data = data;
 	}
 	return (0);
