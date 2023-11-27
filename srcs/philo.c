@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/24 18:10:57 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/24 23:58:28 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	supervisor(t_philo *philo, t_data *data)
 			else
 				pthread_mutex_unlock(&data->death_check);
 		}
-		ft_mssleep(1);
+		// ft_mssleep(1);
 	}
 }
 
@@ -114,8 +114,8 @@ int	philosophers(t_data *data)
 	t_philo	*philo;
 
 	i = data->philo_num;
-	data->first_time = get_time();
 	philo = data->philosophers;
+	data->first_time = get_time();
 	while (--i >= 0)
 	{
 		if (pthread_create(&(philo[i].thread), NULL, routine, &(philo[i])))
