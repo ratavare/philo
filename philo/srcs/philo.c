@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/24 23:58:28 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:19:07 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	supervisor(t_philo *philo, t_data *data)
 			else
 				pthread_mutex_unlock(&data->death_check);
 		}
-		// ft_mssleep(1);
 	}
 }
 
