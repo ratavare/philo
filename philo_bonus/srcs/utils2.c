@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 17:16:38 by ratavare          #+#    #+#             */
-/*   Updated: 2023/12/04 17:46:17 by ratavare         ###   ########.fr       */
+/*   Created: 2023/12/04 17:45:51 by ratavare          #+#    #+#             */
+/*   Updated: 2023/12/04 17:49:53 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_args(int ac, char **av)
+void	handle_one_philo(int id, t_data *data)
 {
-	int	i;
+	print_action(id, data, "has taken a fork");
+	ft_mssleep(data->time_to_die);
+	print_action(id, data, "died");
+}
 
-	i = 2;
-	if (ac == 5 || ac == 6)
-	{
-		if (ft_atoi(av[1]) < 1)
-			return (0);
-		while (i < ac)
-			if (ft_atoi(av[i++]) <= 0)
-				return (0);
-		return (1);
-	}
-	return (0);
+int	ft_abs(int nbr)
+{
+	if (nbr >= 0)
+		return (nbr);
+	else
+		return (-nbr);
+}
+
+void	close_sems(t_data *data)
+{
+	sem_close(data->forks);
+	sem_close(data->writing);
+	sem_close(data->death_check);
 }

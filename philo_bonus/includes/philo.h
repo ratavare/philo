@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/28 18:52:51 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/04 21:43:33 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct s_data
 	sem_t			*death_check;
 	sem_t			*forks;
 	sem_t			*writing;
+	sem_t			*death_write;
 	t_philo			philosophers[250];
 };
 
@@ -69,6 +70,11 @@ int					ft_error(const char *msg, int exit_code);
 void				print_action(int id, t_data *data, char *msg);
 int					check_dead_flag(t_data *data);
 int					check_if_all_ate(t_data *data, t_philo *philo);
+
+// utils2.c
+int					ft_abs(int nbr);
+void				handle_one_philo(int id, t_data *data);
+void				close_sems(t_data *data);
 
 // time.c
 void				ft_mssleep(int ms);

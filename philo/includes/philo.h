@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/24 16:42:56 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/04 15:50:05 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int					check_if_all_ate(t_data *data, t_philo *philo);
 // time.c
 void				ft_mssleep(int ms);
 unsigned long long	get_time(void);
+int					ft_abs(int nbr);
 
 // philo.c
 int					philosophers(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/11/29 18:19:07 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/04 16:25:52 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	*routine(void *v_philo)
 		print_action(philo->id, data, "is sleeping");
 		ft_mssleep(data->time_to_sleep);
 		print_action(philo->id, data, "is thinking");
+		ft_mssleep(ft_abs(data->time_to_eat - data->time_to_sleep) + 10);
 	}
 	return (NULL);
 }
