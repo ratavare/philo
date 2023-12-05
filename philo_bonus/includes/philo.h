@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 16:18:35 by ratavare          #+#    #+#             */
-/*   Updated: 2023/12/04 21:43:33 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:08:32 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ struct s_data
 	int				max_meals;
 	long long		first_time;
 	int				dead_flag;
+	int				sems;
 	sem_t			*death_check;
 	sem_t			*forks;
 	sem_t			*writing;

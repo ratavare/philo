@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 17:02:51 by ratavare          #+#    #+#             */
-/*   Updated: 2023/12/04 22:32:04 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:08:54 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	init_philos(t_data *data)
 
 int	init(t_data *data)
 {
+	data->sems = 1;
 	if (init_semaphore(data))
 		return (1);
 	init_philos(data);

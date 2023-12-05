@@ -6,7 +6,7 @@
 /*   By: ratavare <ratavare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:48:30 by ratavare          #+#    #+#             */
-/*   Updated: 2023/12/04 22:54:59 by ratavare         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:44:44 by ratavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	eating(t_philo *philo, t_data *data)
 {
 	sem_wait(data->forks);
-	print_action(philo->id, data, "has taken a fork (his)"); 
+	print_action(philo->id, data, "has taken a fork"); 
 	sem_wait(data->forks);
-	print_action(philo->id, data, "has taken a fork (right)");
+	print_action(philo->id, data, "has taken a fork");
 	print_action(philo->id, data, "is eating");
 	sem_wait(data->death_check);
 	philo->last_meal = get_time();
@@ -37,11 +37,11 @@ void	*supervisor(void *v_philo)
 	data = philo->data;
 	while (1)
 	{
-		sem_wait(data->death_check);
 		if (get_time() - philo->last_meal >= \
 		(long long unsigned int)data->time_to_die)
 		{
-			print_action(philo->id, data, "died");
+			if (!check_if_all_ate(data, philo))
+				print_action(philo->id, data, "died");
 			sem_wait(data->writing);
 			data->dead_flag = 1;
 			sem_post(data->death_check);
@@ -66,20 +66,20 @@ void	routine(t_philo *philo)
 	pthread_create(&(philo->super), NULL, supervisor, philo);
 	if (philo->id % 2)
 		ft_mssleep(2);
-	while (!check_dead_flag(data))
+	while (!check_dead_flag(data) || check_if_all_ate(data, philo))
 	{
 		usleep(80);
-		if (!data->dead_flag)
+		if (data->sems)
 			eating(philo, data);
 		if (philo->eat_count == data->max_meals)
 			break ;
 		print_action(philo->id, data, "is sleeping");
 		ft_mssleep(data->time_to_sleep);
 		print_action(philo->id, data, "is thinking");
-		ft_mssleep(ft_abs(data->time_to_eat - data->time_to_sleep) + 1);
+		ft_mssleep(ft_abs(data->time_to_eat - data->time_to_sleep));
+		usleep(500);
 	}
 	pthread_join(philo->super, NULL);
-	close_sems(data);
 }
 
 void	destroy(t_philo *philo, t_data *data)
@@ -94,9 +94,11 @@ void	destroy(t_philo *philo, t_data *data)
 		waitpid(-1, &val, 0);
 		if (val != 0)
 		{
-			i = 0;
+			i = -1;
 			while (++i < data->philo_num)
+			{
 				kill(philo[i].pid, SIGKILL);
+			}
 			break ;
 		}
 		i++;
